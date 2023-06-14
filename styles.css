@@ -1,13 +1,17 @@
 cell
 {
     margin: 0;
-    width: 3vw;
-    height: 5vh;
+    width: 0.5vw;
+    height: 1vh;
     background-color: rgb(0, 68, 34);
     border: 1px solid rgb(5, 9, 5);
 }
 .current{
     background-color: azure;
+}
+.currentapple
+{
+    background-color: crimson;
 }
 row
 {
