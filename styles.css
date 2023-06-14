@@ -1,0 +1,19 @@
+cell
+{
+    margin: 0;
+    width: 3vw;
+    height: 5vh;
+    background-color: rgb(0, 68, 34);
+    border: 1px solid rgb(5, 9, 5);
+}
+.current{
+    background-color: azure;
+}
+row
+{
+    display: flex;
+}
+#game
+{
+
+}
