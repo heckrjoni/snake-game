@@ -55,7 +55,7 @@ async function w_key()
     queue.unshift(q);
     console.log(curr_cell)
     curr_cell.classList.toggle("current");
-    await delay(50);
+    await delay(100);
     }
 }
 async function s_key()
@@ -84,7 +84,7 @@ async function s_key()
     queue.unshift(q);
     console.log(curr_cell)
     curr_cell.classList.toggle("current");
-    await delay(50);
+    await delay(100);
     }
 }
 async function d_key()
@@ -113,7 +113,7 @@ async function d_key()
     q=[i,j];
     queue.unshift(q);
     curr_cell.classList.toggle("current");
-    await delay(50);
+    await delay(100);
     }
 }
 async function a_key()
@@ -142,7 +142,7 @@ async function a_key()
     q=[i,j];
     queue.unshift(q);
     curr_cell.classList.toggle("current");
-    await delay(50);
+    await delay(100);
     }
 }
 function game_function()
