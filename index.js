@@ -18,16 +18,33 @@ function delay(ms)
 {
     return new Promise(resolve=> setTimeout(resolve,ms));
 }
-function endgame()
-{
-    key=' ';
-}
 function check()
 {
     for(var k=0;k<queue.length;k++)
     {
         if(queue[k][0]==i&&queue[k][1]==j)
-            {endgame();}    }  
+        {
+            end_game()
+        }
+              
+    }  
+}
+function end_game()
+{
+            key=null;
+            document.removeEventListener("keypress",game_function);
+            game.style.opacity = "0.5";
+            myButton.style.display="block"
+            for(var k=0;k<queue.length;k++)
+            {
+                var m=queue[k][0];
+                var n=queue[k][1];
+                curr_cell=document.getElementById(`cell_${m}_${n}`);
+                curr_cell.classList.toggle("current")                
+            }
+            curr_cell=document.getElementById(`cell_${appi}_${appr}`);
+            curr_cell.classList.toggle("currentapple")
+            queue=null; 
 }
 async function w_key()
 {
@@ -55,7 +72,7 @@ async function w_key()
     queue.unshift(q);
     console.log(curr_cell)
     curr_cell.classList.toggle("current");
-    await delay(100);
+    await delay(200);
     }
 }
 async function s_key()
@@ -84,7 +101,7 @@ async function s_key()
     queue.unshift(q);
     console.log(curr_cell)
     curr_cell.classList.toggle("current");
-    await delay(100);
+    await delay(200);
     }
 }
 async function d_key()
@@ -113,7 +130,7 @@ async function d_key()
     q=[i,j];
     queue.unshift(q);
     curr_cell.classList.toggle("current");
-    await delay(100);
+    await delay(200);
     }
 }
 async function a_key()
@@ -142,41 +159,39 @@ async function a_key()
     q=[i,j];
     queue.unshift(q);
     curr_cell.classList.toggle("current");
-    await delay(100);
+    await delay(200);
     }
 }
-function game_function()
+function game_function(event)
 {
+    key=event.key;
         if(key=='w')
             {
                 w_key();
             }
-        if(key=='a')
+        else if(key=='a')
             {
                 a_key();
             }
-        if(key=='s')
+        else if(key=='s')
             {
                 s_key();
             }
-        if(key=='d')
+        else if(key=='d')
             {
                 d_key();
             }
 }
 function start_function()
     {
-        document.addEventListener('keypress',function(event){
-            key=event.key;
-            game_function();
-        })
+        document.addEventListener('keypress',game_function)
     }  
 var begin=0;
 var key;
 const myButton = document.getElementById('start');
-var i = Math.floor(Math.random() * 10);
-var j = Math.floor(Math.random() * 10);
-var queue=[[i,j]];
+var i;
+var j;
+var queue;
 var appi;
 var appr;
 function generate_apple()
@@ -197,7 +212,25 @@ function generate_apple()
     curr_cell.classList.toggle("currentapple")
 }
 var curr_cell;
-myButton.addEventListener('click', function() {
+var game = document.getElementById("game");
+game.style.opacity = "0.5";
+myButton.addEventListener('click', start);
+function start()
+{
+    game.style.opacity = "1";
+    myButton.style.display="none"
+    // if (game.style.opacity === "0.5") {
+    //     game.style.opacity = "1";
+    // } 
+    // else
+    // {
+    //     game.style.opacity = "0.5";
+    // }
+    begin=0;
+    key=null;
+    i = Math.floor(Math.random() * 10);
+    j = Math.floor(Math.random() * 10);
+    queue=[[i,j]];
     if(begin==0)
     {
         for(var k=0;k<queue.length;k++)
@@ -208,9 +241,9 @@ myButton.addEventListener('click', function() {
             curr_cell.classList.toggle("current")
         }
         generate_apple();
+        begin=1;
         start_function();  
-        begin=1; 
+         
     }
-    }
-)
+}
  
